@@ -1,0 +1,63 @@
+
+@import "tailwindcss";
+
+/* Normal website display */
+html,
+body,
+#root {
+  min-height: 100%; 
+  margin: 0;
+}
+
+
+/* Print only the resume on A4 paper and remove browser default header/footer (localhost, title, date) */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  /* Hide the header, form, buttons, and other website content */
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+
+  /* Reset outer wrappers */
+  html,
+  body,
+  #root,
+  #root > div,
+  main {
+    width: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    box-shadow: none !important;
+  }
+
+  /* Position the resume correctly with custom margins for print */
+  .resume-paper {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 12mm 15mm !important;
+    box-sizing: border-box !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important; 
+    background: white !important;
+    color: black !important;
+    overflow: visible !important;
+  }
+
+  /* Avoid splitting individual resume entries across pages */
+  .resume-paper section > div {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
